@@ -10,7 +10,7 @@ body {
   padding-top: 6rem;
   padding-bottom: 6rem;
   margin-bottom: 0;
-  background-color: #fff;
+  background-color: #222222;
 }
 
 .jumbotron p:last-child {
@@ -19,7 +19,7 @@ body {
 
 .jumbotron-heading {
   font-weight: 300;
-  conlor:#333333;
+  conlor:#ffffff;
 }
 
 .jumbotron .container {
@@ -30,7 +30,7 @@ body {
   min-height: 50rem; /* Can be removed; just added for demo purposes */
   padding-top: 3rem;
   padding-bottom: 3rem;
-  background-color: #f7f7f7;
+  background-color: #000000;
 }
 
 .card {
@@ -48,8 +48,8 @@ body {
 .card-text {
   font-size: 85%;
   font-family: Barlow;
-  font-weight: 600;
-  color:#333333;
+  font-weight: 400;
+  color:#ffffff;
 }
 
 footer {
@@ -67,5 +67,5 @@ footer p {
 }
 
 .lead {
-	color:#333333;
+	color:#666666;
 }
