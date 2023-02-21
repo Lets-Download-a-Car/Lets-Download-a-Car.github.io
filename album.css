@@ -19,6 +19,7 @@ body {
 
 .jumbotron-heading {
   font-weight: 300;
+  conlor:#333333;
 }
 
 .jumbotron .container {
@@ -48,6 +49,7 @@ body {
   font-size: 85%;
   font-family: Barlow;
   font-weight: 600;
+  color:#333333;
 }
 
 footer {
@@ -62,4 +64,8 @@ footer p {
 @font-face {
   font-family: "Don Graffiti";
   src: url("DonGraffiti.otf");
+}
+
+.lead {
+	color:#333333;
 }
