@@ -46,6 +46,8 @@ body {
 
 .card-text {
   font-size: 85%;
+  font-family: Barlow;
+  font-weight: 600;
 }
 
 footer {
