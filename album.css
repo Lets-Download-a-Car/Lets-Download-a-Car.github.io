@@ -40,6 +40,7 @@ body {
   margin-bottom: 2rem;
   border: 0;
   background-color: #000000;
+  border-radius: none;
 }
 
 .card > img {
@@ -68,5 +69,5 @@ footer p {
 }
 
 .lead {
-	color:#666666;
+	color:#09e805;
 }
