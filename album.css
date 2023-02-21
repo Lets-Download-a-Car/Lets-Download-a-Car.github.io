@@ -56,3 +56,8 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
+
+@font-face {
+  font-family: "Don Graffiti";
+  src: url("don-graffiti.otf");
+}
