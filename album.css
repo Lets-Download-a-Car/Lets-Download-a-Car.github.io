@@ -57,6 +57,8 @@ body {
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
+  background-color: #000000;
+  color:#000000;
 }
 
 footer p {
