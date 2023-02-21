@@ -10,7 +10,7 @@ body {
   padding-top: 6rem;
   padding-bottom: 6rem;
   margin-bottom: 0;
-  background-color: #222222;
+  background-color: #000000;
 }
 
 .jumbotron p:last-child {
@@ -19,7 +19,7 @@ body {
 
 .jumbotron-heading {
   font-weight: 300;
-  conlor:#ffffff;
+  color:#ffffff;
 }
 
 .jumbotron .container {
@@ -30,7 +30,7 @@ body {
   min-height: 50rem; /* Can be removed; just added for demo purposes */
   padding-top: 3rem;
   padding-bottom: 3rem;
-  background-color: #000000;
+  background-color: #141414;
 }
 
 .card {
@@ -39,6 +39,7 @@ body {
   padding: .75rem;
   margin-bottom: 2rem;
   border: 0;
+  background-color: #000000;
 }
 
 .card > img {
