@@ -74,3 +74,8 @@ footer p {
 	color:#09e805 !important;
 	font-family: Barlow !important;
 }
+
+.navbar-toggler {
+    color: #ffffff;
+    background-color:#09e805;
+}
