@@ -88,3 +88,7 @@ h4 {
 p  {
 	font-family: Barlow !important;
 }
+
+.navbar-brand {
+    font-size: .7rem;
+}
