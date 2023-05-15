@@ -58,10 +58,28 @@
         </div>
       </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
       <div class="album text-muted">
         <div class="container">
 
           <div class="row">
+
+
+
+
+
+
     <div class="card">
   <img src="images/yt-cover.jpg" alt="Live Set Re-Projection" style="width:100%" 
        data-toggle="modal" data-target="#video-modal">
@@ -128,20 +146,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -216,6 +220,1439 @@
 
 
 
+</div></div></div>
+
+
+
+<!--<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">-->
+<meta name="viewport" content="width=device-width">
+
+
+
+
+<!doctype html>
+<html>
+<head>
+<TITLE>
+LDAC
+</TITLE>
+<link rel='stylesheet' href='https://kunaki.com/KunakiWebSiteStyle.css' type='text/css'>
+<STYLE>
+body {
+  font-family: Sans-Serif;
+}
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 1220px;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 16.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #aaaaaa;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 26px;
+  width: 66px;
+  border-radius: 3px;
+  background: #dddddd;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #aaaaaa;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #aaaaaa;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 26px;
+  width: 66px;
+  border-radius: 3px;
+  background: #dddddd;
+  cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 16px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: #aaaaaa;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #aaaaaa;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 26px;
+  width: 66px;
+  border-radius: 3px;
+  background: #dddddd;
+  cursor: pointer;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+  background: #aaaaaa;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #aaaaaa;
+}
+
+
+
+#MyCanvas {
+    width: 1220px;
+    height: 1000px;
+    margin: 0 auto;
+    position: relative;    
+}
+max-width:100%;
+/*
+html{
+    width:100%;
+    height:100%;
+}
+body{
+    width:100%;
+    height:100%;
+}
+*/
+
+</STYLE>
+</head>
+
+<body>
+
+<TABLE width=100% height=100% align=center border=0><TR>
+<TR><TD>&nbsp;</TD>
+<TD align=center  valign=top >
+
+<div id='MyCanvas'> 
+    <canvas id="idRecordPlayer" style='z-index: 1;position: absolute;left:0px;    top:0px; border=0;' width=1220 height=1000></canvas>
+    <canvas id="idVinylRecord"  style='z-index: 2;position: absolute;left:25px;    top:34px; border=0;' width=895 height=895></canvas>
+    <canvas id="idTransparent"  style='z-index: 3;position: absolute;left:25px;    top:34px; border=0;' width=895 height=895></canvas>
+    <canvas id="idNeedleArm" 	style='z-index: 4;position: absolute;left:0px;    top:0px; border=0;' width=1220 height=1000></canvas>
+
+	<canvas id="idFToneArm" style='display: none;' width=1500 height=1500></canvas>
+</div>
+</TD>
+<TD>&nbsp;</TD>
+</TR>
+
+
+<TR><TD COLSPAN=3 align=center><Audio  id="MyPlayer" preload> </audio> <input type="range" id="MyAudioRange" name="volume" min="0" max="100" oninput="AdjustVolume(this.value)" onchange="AdjustVolume(this.value)"></TD></TR>
+<TR><TD COLSPAN=3 align=center><STRONG>Click or touch ON-button.  Use mouse or finger to drag tone-arm over track and release it.  Track will play.</STRONG></TD></TR>
+<TR><TD COLSPAN=3 align=center><input style="width:1220px" type=button onclick=FlipRecord() value="flip record"></TD></TR>
+
+</TABLE>
+
+
+
+
+<script>
+
+var ManufactureStatus = 'OFF';
+
+
+
+var VinylRecord = {
+DiscType: 'vinyl',
+ProductId: 'PX00Z8WOLI',
+Material: 'Vinyl',
+Color: 'Black',
+DiameterInches: 12,
+ThicknessMM: 1.2,
+WeightGrams: 120,
+JacketCoverWidthInches: 12.25,
+JacketCoverHeightInches: 12.25,
+LabelDiameterInches: 4,
+Side: [
+	{
+		LabelGraphicURLPath: 'https://kunaki.com/VinylRecords/PX00Z8WOLI.Label-A.jpg',
+		AlbumTrackURLPath: 'https://kunaki.com/VinylRecords/PX00Z8WOLI.A.MP3',
+		Track: [
+			{ URLPath: 'https://kunaki.com/VinylRecords/PX00Z8WOLI.A.1.mp3',Duration: 1200}
+			]
+	},
+
+	{
+		LabelGraphicURLPath: 'https://kunaki.com/VinylRecords/PX00Z8WOLI.Label-B.jpg',
+		AlbumTrackURLPath: 'https://kunaki.com/VinylRecords/PX00Z8WOLI.B.MP3',
+		Track: [
+			{ URLPath: 'https://kunaki.com/VinylRecords/PX00Z8WOLI.B.1.mp3',Duration: 1200}
+				]
+	}
+	],
+JacketDecoration: {
+		FrontURLPath: 'https://kunaki.com/VinylRecords/PX00Z8WOLI.Front.jpg',
+		BackURLPath: 'https://kunaki.com/VinylRecords/PX00Z8WOLI.Back.jpg'
+	}
+};
+
+
+
+
+function ObjectLength( object ) {
+    var length = 0;
+    for( var key in object ) {
+        if( object.hasOwnProperty(key) ) {
+            ++length;
+        }
+    }
+    return length;
+}
+
+function IsIPhone() 
+{
+//	if (TurnTable.Manufacturing == 0)
+//		return 1;
+  	var mac = navigator.platform.match(/(Mac|iPhone|iPod|iPad)/i) ? true : false;
+  	if (mac) 
+    		return 1;
+	else
+		return 0;
+}
+var TurnTable = {
+	DevelopedBy: "Kunaki LLC",
+	Model: "k-v-340",
+	CurrentSide: 0,
+	CurrentTrack: 0,
+	NumberOfTracks: 0,
+	PlayerCanvas: "idRecordPlayer",
+	PlayerImgPath: "https://kunaki.com/vinyl/an-turntable-embeddedlogo3.jpg",
+	RecordCanvas: "idVinylRecord",
+	RecordImgPath: "../vinyl/an-vinyl.jpg",
+	TransparentCanvas: "idTransparent",
+	ToneArmCanvas: "idNeedleArm",
+	FToneArmCanvas: "idFToneArm",
+	FToneArmImgPath: "https://kunaki.com/vinyl/tonearm_3.png",
+	angleInDegrees: 10,
+	ArmangleInDegrees: 10,
+	ToneArmAxisX: 1002,
+	ToneArmAxisY: 214,
+	ToneArmRadius: 645,
+	ToneArmPickupAreaWidth: 150,
+	ToneArmPickupAreaHeight: 275,
+ 	GrooveColor: "GREEN",
+	RPM: 33,
+	RPS: function() {return this.RPM/60;},
+	RotationPulseMilliSeconds: 200,
+	RotationDegreesPerPulse: 40,
+	OnStatus:  "OFF",
+	TestNumber: 6,
+	MouseDownOverNeedle: "OFF",
+	StartNeedleArmAngle: 22.4,
+	MaxNeedleArmAngle: 44.458,
+/* was 46 */
+	LastForeverGrooveAngle: 50,
+// 47,
+	MaxNeedleArmArc: function() { return (this.MaxNeedleArmAngle - this.StartNeedleArmAngle);},
+	MaxSecondsOnVinyl: 1380,
+	VinylPixelRadius: 448,
+	NeedleAngleAdjustmentPerSecond: function() {return (this.MaxNeedleArmArc()/this.MaxSecondsOnVinyl);},
+	SecondsPerNeedleArmDegree: function() {return (this.MaxSecondsOnVinyl/this.MaxNeedleArmArc());},
+	MinGroovePixelRadius: 200,
+	MaxGroovePixelRadius: 432,
+	GrooveRadiusAdjustmentPerSecond: function() { return (this.MaxGroovePixelRadius - this.MinGroovePixelRadius) / this.MaxSecondsOnVinyl; },
+	LabelRadius: function() { return ((this.VinylPixelRadius*2)/6);},	
+	TotalDuration: 0,
+	ToneArmVibration: 0,
+	IPhone: 0,
+	IPhoneTrackLoaded: 0,
+	ViewJacketActivated: 0,
+	Manufacturing: 0
+	};
+
+
+var PP;
+
+var port;
+var FToneArmImage;
+var VinylRecordImage;
+var TransparentImage;
+var PlayerImage
+
+var ArmTimer;
+var PlayerTimer;
+var TestMotorTimer;
+
+function AdjustVolume(NewVolume)
+{
+	PP.volume = NewVolume/100;
+}
+
+
+function DisplayTurnTableComponent(CanvasId,ImgPath, Image)
+{
+
+	if (CanvasId == "IdTransparent") {
+		Image=document.createElement("img");
+		return;
+		}
+	
+	Image=document.createElement("img");
+     	
+	if (CanvasId == "idVinylRecord") {
+		VinylRecordImage=document.createElement("img");
+		Context(CanvasId).beginPath();
+		var x = 895/2;
+		var y = 895/2;
+		var radius = 895/2;
+		Context(CanvasId).arc(x, y, radius, 0, Math.PI * 2, false);
+		Context(CanvasId).closePath();
+		Context(CanvasId).clip();
+
+	    	VinylRecordImage.onload=function(){
+      			Context(CanvasId).drawImage(VinylRecordImage,0,0);
+			AddCenterLabel();
+			DrawSeparationGrooves();
+			return;
+		    	}
+		VinylRecordImage.src=ImgPath;
+		return;
+		}
+
+	if (CanvasId == "idFToneArm") {
+		FToneArmImage=document.createElement("img");
+		Canvas(TurnTable.FToneArmCanvas).width = 1500;
+    		Canvas(TurnTable.FToneArmCanvas).height = 1500;
+	   	FToneArmImage.onload=function(){
+			Context(TurnTable.FToneArmCanvas).drawImage(FToneArmImage,0,0);
+			DrawFakeNeedle();
+			return;
+    			}
+		FToneArmImage.src=ImgPath;
+		return;
+		}
+	
+  	Image.onload=function(){
+
+        	Context(CanvasId).drawImage(Image,0,0);
+		DisplayStartButton("OFF");
+    		}
+    	Image.src=ImgPath;
+}				
+
+function SetupAudioPlayer()
+{
+	PP = document.getElementById("MyPlayer");
+	PP.addEventListener("ended",PlayNextTrack,false);
+	
+}
+
+function SetRecordOnPlayer()
+{
+	TurnTable.TotalDuration = 0;
+	TurnTable.NumberOfTracks = ObjectLength(VinylRecord.Side[TurnTable.CurrentSide].Track);
+	for (i=0;i<TurnTable.NumberOfTracks;i++)
+		TurnTable.TotalDuration = TurnTable.TotalDuration + VinylRecord.Side[TurnTable.CurrentSide].Track[i].Duration;
+	DisplayTurnTableComponent(TurnTable.RecordCanvas,TurnTable.RecordImgPath,"");
+	if (TurnTable.IPhone == 1)
+		;
+	else
+		PP.src = VinylRecord.Side[TurnTable.CurrentSide].Track[TurnTable.CurrentTrack].URLPath;
+}
+
+
+function  Initialize()
+{
+
+	InitializeManufacture();
+	if (ManufactureStatus == "ON")
+		TurnTable.Manufacturing = 1;
+	TurnTable.IPhone = IsIPhone();
+
+	if (TurnTable.IPhone == 1) 
+		RemoveAudioSlider();
+	SetupAudioPlayer();
+
+	////////////////  display the TurnTable components ///////////////////
+	
+
+	DisplayTurnTableComponent(TurnTable.PlayerCanvas,TurnTable.PlayerImgPath,PlayerImage);
+	DisplayTurnTableComponent(TurnTable.FToneArmCanvas,TurnTable.FToneArmImgPath,FToneArmImage);
+	SetRecordOnPlayer();
+
+	SetupAllEvents();
+}
+
+
+function RemoveAudioSlider()
+{
+	var mac = navigator.platform.match(/(Mac|iPhone|iPod|iPad)/i) ? true : false;
+  	if (!mac) 
+    		return;
+    var elem = document.getElementById('MyAudioRange');
+    elem.parentNode.removeChild(elem);
+}
+
+
+function SetupAllEvents()
+{
+
+	Canvas(TurnTable.ToneArmCanvas).addEventListener('mousedown',function(event)  {
+	    	let bound = Canvas(TurnTable.ToneArmCanvas).getBoundingClientRect();
+	    	let x = event.clientX - bound.left - Canvas(TurnTable.ToneArmCanvas).clientLeft;
+    		let y = event.clientY - bound.top - Canvas(TurnTable.ToneArmCanvas).clientTop;
+		CheckNeedleArmClick(x,y);
+		});
+
+	Canvas(TurnTable.ToneArmCanvas).addEventListener('click', function(event) {
+	    	let bound = Canvas(TurnTable.ToneArmCanvas).getBoundingClientRect();
+    		let x = event.clientX - bound.left - Canvas(TurnTable.ToneArmCanvas).clientLeft;
+	    	let y = event.clientY - bound.top -  Canvas(TurnTable.ToneArmCanvas).clientTop;
+		CheckTurnTableClick(x,y);
+		
+		});
+/*	Canvas(TurnTable.TransparentCanvas).addEventListener('click', function(event) {
+	    	let bound = Canvas(TurnTable.TransparentCanvas).getBoundingClientRect();
+    		let x = event.clientX - bound.left - Canvas(TurnTable.TransparentCanvas).clientLeft;
+	    	let y = event.clientY - bound.top -  Canvas(TurnTable.TransparentCanvas).clientTop;
+		CheckTurnTableClick(x,y);
+		});
+
+	Canvas(TurnTable.ToneArmCanvas).addEventListener('click', function(event) {
+	    	let bound = Canvas(TurnTable.TransparentCanvas).getBoundingClientRect();
+    		let x = event.clientX - bound.left - Canvas(TurnTable.TransparentCanvas).clientLeft;
+	    	let y = event.clientY - bound.top -  Canvas(TurnTable.TransparentCanvas).clientTop;
+		CheckTurnTableClick(x,y);
+		});
+*/
+	Canvas(TurnTable.ToneArmCanvas).addEventListener('mouseup', function(event) {
+		if (TurnTable.MouseDownOverNeedle == "OFF")
+			return;
+	    	let bound = Canvas(TurnTable.ToneArmCanvas).getBoundingClientRect();
+    		let x = event.clientX - bound.left - Canvas(TurnTable.ToneArmCanvas).clientLeft;
+	    	let y = event.clientY - bound.top - Canvas(TurnTable.ToneArmCanvas).clientTop;
+		TurnTable.MouseDownOverNeedle = "OFF";
+		PlayTrack();
+		});
+
+	Canvas(TurnTable.ToneArmCanvas).addEventListener('mousemove', function(event) {
+		if (TurnTable.MouseDownOverNeedle  == "OFF")
+			return;
+    		let bound = Canvas(TurnTable.ToneArmCanvas).getBoundingClientRect();
+    		let x = event.clientX - bound.left - Canvas(TurnTable.ToneArmCanvas).clientLeft;
+    		let y = event.clientY - bound.top - Canvas(TurnTable.ToneArmCanvas).clientTop;
+		MoveNeedle(x,y);
+		});
+
+//////////////////// this is for android, iphone and touch screen systems.
+
+	Canvas(TurnTable.ToneArmCanvas).addEventListener('touchstart', function(event) {
+	    	let bound = Canvas(TurnTable.ToneArmCanvas).getBoundingClientRect();
+  		var touchobj = event.changedTouches[0] // reference first touch point (ie: first finger)
+	        let x = parseInt(touchobj.clientX) - bound.left - Canvas(TurnTable.ToneArmCanvas).clientLeft;
+		let y = parseInt(touchobj.clientY) - bound.top - Canvas(TurnTable.ToneArmCanvas).clientTop;
+		if (CheckTurnTableClick(x,y) == 1 || CheckNeedleArmClick(x,y) == 1)
+			event.preventDefault();
+//		CheckTurnTableClick(x,y);
+//		CheckNeedleArmClick(x,y);
+		});
+
+	Canvas(TurnTable.ToneArmCanvas).addEventListener('touchend', function(event) {
+		if (TurnTable.MouseDownOverNeedle == "OFF")
+			return;
+//		event.preventDefault();
+		TurnTable.MouseDownOverNeedle = "OFF";
+		PlayTrack();
+		});
+
+
+	Canvas(TurnTable.ToneArmCanvas).addEventListener('touchmove', function(event) {
+		if (TurnTable.MouseDownOverNeedle == "OFF")
+			return;
+	    	let bound = Canvas(TurnTable.ToneArmCanvas).getBoundingClientRect();
+		var touchobj = event.changedTouches[0] // reference first touch point (ie: first finger)
+	        let x = parseInt(touchobj.clientX) - bound.left - Canvas(TurnTable.ToneArmCanvas).clientLeft;
+		let y = parseInt(touchobj.clientY) - bound.top - Canvas(TurnTable.ToneArmCanvas).clientTop;
+		if (MoveNeedle(x,y) == 1)
+			event.preventDefault();
+		
+		});
+}
+
+
+
+////////////////////////////////////////// Functions
+
+function OldDrawFakeNeedle() 
+{
+	Context(TurnTable.ToneArmCanvas).clearRect(0,0,Canvas(TurnTable.ToneArmCanvas).width, Canvas(TurnTable.ToneArmCanvas).height);
+	if (TurnTable.MouseDownOverNeedle == "OFF"  ) {
+		if (TurnTable.ToneArmVibration == 0) {
+			Context(TurnTable.ToneArmCanvas).drawImage(Canvas(TurnTable.FToneArmCanvas), 0, 525,950,1500-550,   256,9, 950,1500-550);	
+			TurnTable.ToneArmVibration = 1;
+			}
+		else {
+			TurnTable.ToneArmVibration = 0;
+			Context(TurnTable.ToneArmCanvas).drawImage(Canvas(TurnTable.FToneArmCanvas), 0, 525,950,1500-550,   256-1,8, 950+1,1500-550+1);
+			}
+			
+		return;
+		}
+	Context(TurnTable.ToneArmCanvas).drawImage(Canvas(TurnTable.FToneArmCanvas), 0, 525,950,1500-550,   256-20,0, 950+20,1500-550+20);
+}
+function OldOldDrawFakeNeedle() 
+{
+	Context(TurnTable.ToneArmCanvas).clearRect(0,0,Canvas(TurnTable.ToneArmCanvas).width, Canvas(TurnTable.ToneArmCanvas).height);
+
+//	Context(TurnTable.ToneArmCanvas).drawImage(Canvas(TurnTable.FToneArmCanvas), 0, 525,950,1500-550,   256-20,0, 950+20,1500-550+20);
+
+var sy= 1500-960;
+var sh=960;
+var sw = 750+100+200;
+var sx = 1220-sw;
+
+var dy=sy-513;
+var dh = sh;
+var dw= sw;
+var dx = sx+252;
+
+	if (TurnTable.MouseDownOverNeedle == "OFF"  )
+		Context(TurnTable.ToneArmCanvas).drawImage(Canvas(TurnTable.FToneArmCanvas), sx, sy,sw,sh,   dx,dy, dw,dh);
+	else
+		Context(TurnTable.ToneArmCanvas).drawImage(Canvas(TurnTable.FToneArmCanvas), sx, sy,sw,sh,   dx-20,dy, dw+20,dh+20);
+}
+
+function DrawFakeNeedle() 
+{
+	Context(TurnTable.ToneArmCanvas).clearRect(0,0,Canvas(TurnTable.ToneArmCanvas).width, Canvas(TurnTable.ToneArmCanvas).height);
+
+//	Context(TurnTable.ToneArmCanvas).drawImage(Canvas(TurnTable.FToneArmCanvas), 0, 525,950,1500-550,   256-20,0, 950+20,1500-550+20);
+
+
+/*
+var sy= 560;//;
+var sh=915;//960-25;
+var sw = 750+100+200;
+var sx = 1220-sw;
+
+var dy=sy-513;
+var dh = sh;
+var dw= sw;
+var dx = sx+252;
+*/
+
+var sy= 560;//;
+var sh=915;//960-25;
+var sw = 900;
+var sx = 0;
+
+var dy=sy-513;
+var dh = sh;
+var dw= sw;
+var dx = sx+252;
+	if (TurnTable.MouseDownOverNeedle == "OFF"  )
+		Context(TurnTable.ToneArmCanvas).drawImage(Canvas(TurnTable.FToneArmCanvas), sx, sy,sw,sh,   dx,dy, dw,dh);
+	else
+		Context(TurnTable.ToneArmCanvas).drawImage(Canvas(TurnTable.FToneArmCanvas), sx+0, sy,sw-0,sh-0,   dx-5,dy+5, dw+0,dh+0);
+}
+
+function FlipRecord()
+{
+	StopPlayer();
+	SpiralToHome();
+	TurnTable.IPhoneTrackLoaded = 0;
+	if (TurnTable.CurrentSide == 0)
+		TurnTable.CurrentSide = 1;
+	else
+		TurnTable.CurrentSide = 0;
+	SetRecordOnPlayer();
+	AddCenterLabel();
+	DrawSeparationGrooves();
+}
+function AddCenterLabel()
+{
+	if (VinylRecord.DiscType == "vinylpic") {
+		AddPictureCenterLabel();
+		return;
+		}
+		
+	var LabelCanvas = document.createElement('canvas');
+
+	LabelCanvas.width = Canvas(TurnTable.RecordCanvas).width/3;
+	LabelCanvas.height = Canvas(TurnTable.RecordCanvas).height/3;
+	var LabelImage=document.createElement("img");
+	var NewLabelImage = document.createElement("img");
+	var TempRecordImage = document.createElement("img");
+// Get the drawing context
+	var ctxLabelCanvas = LabelCanvas.getContext('2d');	
+	ctxLabelCanvas.beginPath();
+	ctxLabelCanvas.arc(LabelCanvas.width/2,LabelCanvas.height/2, LabelCanvas.width/2, 0, Math.PI * 2, false);
+	ctxLabelCanvas.closePath();
+	ctxLabelCanvas.clip();
+
+
+
+
+   	LabelImage.onload=function()  {		//1
+
+	      	ctxLabelCanvas.drawImage(LabelImage,0,0, LabelCanvas.width,LabelCanvas.height);
+		NewLabelImage.onload=function() {  	//2
+			Context(TurnTable.RecordCanvas).drawImage(NewLabelImage,Canvas(TurnTable.RecordCanvas).width/3,Canvas(TurnTable.RecordCanvas).height/3);
+    			VinylRecordImage.onload=function() {  //4
+        			Context(TurnTable.RecordCanvas).drawImage(TempRecordImage,0,0);
+				}	//4
+			VinylRecordImage.src = Canvas(TurnTable.RecordCanvas).toDataURL("image/png");
+			} 	// 2
+		NewLabelImage.src = LabelCanvas.toDataURL("image/png");
+    		} //1
+    	LabelImage.src = VinylRecord.Side[TurnTable.CurrentSide].LabelGraphicURLPath;
+}
+
+function AddPictureCenterLabel()
+{
+
+	var LabelCanvas = document.createElement('canvas');
+//	LabelCanvas.width = Canvas(TurnTable.RecordCanvas).width/3;
+//	LabelCanvas.height = Canvas(TurnTable.RecordCanvas).height/3;
+	LabelCanvas.width = Canvas(TurnTable.RecordCanvas).width;
+	LabelCanvas.height = Canvas(TurnTable.RecordCanvas).height;
+	var LabelImage=document.createElement("img");
+	var NewLabelImage = document.createElement("img");
+	var TempRecordImage = document.createElement("img");
+// Get the drawing context
+	var ctxLabelCanvas = LabelCanvas.getContext('2d');	
+//	ctxLabelCanvas.beginPath();
+//	ctxLabelCanvas.arc(LabelCanvas.width/2,LabelCanvas.height/2, LabelCanvas.width/2, 0, Math.PI * 2, false);
+//	ctxLabelCanvas.closePath();
+//	ctxLabelCanvas.clip();
+
+
+
+
+   	LabelImage.onload=function()  {		//1
+
+	      	ctxLabelCanvas.drawImage(LabelImage,0,0, LabelCanvas.width,LabelCanvas.height);
+		NewLabelImage.onload=function() {  	//2
+			Context(TurnTable.RecordCanvas).drawImage(NewLabelImage,Canvas(TurnTable.RecordCanvas).width/3,Canvas(TurnTable.RecordCanvas).height/3);
+			Context(TurnTable.RecordCanvas).drawImage(NewLabelImage,0,0);
+
+    			VinylRecordImage.onload=function() {  //4
+        			Context(TurnTable.RecordCanvas).drawImage(TempRecordImage,0,0);
+
+				}	//4
+//alert("poiint 1 = " + Canvas(TurnTable.RecordCanvas).width/2);
+Context(TurnTable.RecordCanvas).beginPath();
+Context(TurnTable.RecordCanvas).arc(Canvas(TurnTable.RecordCanvas).width/2, Canvas(TurnTable.RecordCanvas).width/2, 0.03*Canvas(TurnTable.RecordCanvas).width/2, 0, Math.PI * 2 , false);
+//Context(TurnTable.RecordCanvas).arc(50, 50, 20, 0, Math.PI * 2 , false);
+Context(TurnTable.RecordCanvas).fillStyle = '#FFFFFF';
+Context(TurnTable.RecordCanvas).fill();
+			VinylRecordImage.src = Canvas(TurnTable.RecordCanvas).toDataURL("image/png");
+			} 	// 2
+
+//LabelImage.src = convertCanvasToImage(Canvas(TurnTable.RecordCanvas));
+		NewLabelImage.src = LabelCanvas.toDataURL("image/png");
+
+
+
+
+    		} //1
+ 	LabelImage.src = VinylRecord.Side[TurnTable.CurrentSide].LabelGraphicURLPath;
+	
+//	LabelImage.src = convertCanvasToImage(Canvas(TurnTable.RecordCanvas));
+
+
+
+
+}
+
+
+
+function convertCanvasToImage(canvas) {
+	var image = new Image();
+	image.src = canvas.toDataURL("image/png");
+	return image;
+}
+
+
+function Canvas(CanvasId)
+{
+	return document.getElementById(CanvasId);
+}
+
+function Context(CanvasId)
+{
+	return document.getElementById(CanvasId).getContext("2d");
+}
+
+function DrawSeparationGrooves()
+{
+
+	var centerX = Canvas(TurnTable.TransparentCanvas).width / 2;
+      	var centerY = Canvas(TurnTable.TransparentCanvas).height / 2;
+	var MyColor;
+	var LineWidth;
+	var radius;
+
+	if (TurnTable.GrooveColor == "GREEN") {
+		LineWidth = 1;
+		MyColor = "#888888";
+		}
+	else {
+		MyColor = "#000000";
+		LineWidth = 4;
+		}
+
+	Context(TurnTable.TransparentCanvas).clearRect(0,0,Canvas(TurnTable.TransparentCanvas).width,Canvas(TurnTable.TransparentCanvas).height);
+
+	var TSeconds = 0;
+
+		radius = TurnTable.MaxGroovePixelRadius - (TurnTable.GrooveRadiusAdjustmentPerSecond() * TSeconds);
+		Context(TurnTable.TransparentCanvas).beginPath();
+      		Context(TurnTable.TransparentCanvas).arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	     	Context(TurnTable.TransparentCanvas).lineWidth = (TurnTable.VinylPixelRadius - TurnTable.MaxGroovePixelRadius)/2;
+		Context(TurnTable.TransparentCanvas).strokeStyle = "#000000";
+		Context(TurnTable.TransparentCanvas).closePath();
+	       	Context(TurnTable.TransparentCanvas).stroke();
+
+
+
+		radius = TurnTable.MaxGroovePixelRadius - (TurnTable.GrooveRadiusAdjustmentPerSecond() * TSeconds);
+		Context(TurnTable.TransparentCanvas).beginPath();
+      		Context(TurnTable.TransparentCanvas).arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	       	Context(TurnTable.TransparentCanvas).lineWidth = LineWidth;
+		Context(TurnTable.TransparentCanvas).strokeStyle = MyColor;
+		Context(TurnTable.TransparentCanvas).closePath();
+	       	Context(TurnTable.TransparentCanvas).stroke();
+
+
+	
+	for (i=0; i < TurnTable.NumberOfTracks;i++) {
+		TSeconds = TSeconds + VinylRecord.Side[TurnTable.CurrentSide].Track[i].Duration;
+		if (TSeconds > TurnTable.MaxSecondsOnVinyl )
+			break;
+		radius = TurnTable.MaxGroovePixelRadius - (TurnTable.GrooveRadiusAdjustmentPerSecond() * TSeconds);
+		Context(TurnTable.TransparentCanvas).beginPath();
+      		Context(TurnTable.TransparentCanvas).arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	    	Context(TurnTable.TransparentCanvas).lineWidth = LineWidth;
+		Context(TurnTable.TransparentCanvas).strokeStyle = MyColor;
+		Context(TurnTable.TransparentCanvas).closePath();
+	       	Context(TurnTable.TransparentCanvas).stroke();
+		}
+		
+		Context(TurnTable.TransparentCanvas).beginPath();
+      		Context(TurnTable.TransparentCanvas).arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	       	Context(TurnTable.TransparentCanvas).lineWidth = LineWidth;
+		Context(TurnTable.TransparentCanvas).strokeStyle = MyColor;
+		Context(TurnTable.TransparentCanvas).closePath();
+	       	Context(TurnTable.TransparentCanvas).stroke();
+
+	for (i=radius-5 ;i>=TurnTable.LabelRadius();i=i-4) {
+		Context(TurnTable.TransparentCanvas).beginPath();
+    		Context(TurnTable.TransparentCanvas).arc(centerX, centerY, i, 0, 2 * Math.PI, false);
+	       	Context(TurnTable.TransparentCanvas).lineWidth = 2;
+		Context(TurnTable.TransparentCanvas).strokeStyle = '#000000';
+	       	Context(TurnTable.TransparentCanvas).stroke();
+		Context(TurnTable.TransparentCanvas).closePath();
+		}
+
+}
+
+
+
+
+function MyConsole(msg)
+{
+	return;
+	console.log(msg);
+}
+
+
+function MoveNeedle(x,y)
+{
+	if (TurnTable.MouseDownOverNeedle == "OFF")
+		return 0;
+
+	TurnTable.ArmangleInDegrees = CalcArmAngle(x,y);  // -9
+	if (TurnTable.ArmangleInDegrees > TurnTable.LastForeverGrooveAngle) {  // if overshoot // jan5 2018
+		TurnTable.ArmangleInDegrees = TurnTable.LastForeverGrooveAngle;
+		drawRotateArm(TurnTable.ArmangleInDegrees);
+		return 1;
+		}
+	if (TurnTable.ArmangleInDegrees < 0) {  // if overshoot
+		TurnTable.ArmangleInDegrees = 0;
+		drawRotateArm(TurnTable.ArmangleInDegrees);
+		return 1;
+		}
+	if (TurnTable.ArmangleInDegrees < 0 || TurnTable.ArmangleInDegrees > TurnTable.LastForeverGrooveAngle) {
+//		TurnTable.ArmangleInDegrees = 0;
+//		drawRotateArm(TurnTable.ArmangleInDegrees);
+		return 1;
+		}
+        drawRotateArm(TurnTable.ArmangleInDegrees);
+	if (TurnTable.IPhone == 1)
+		PP.muted = true;
+	return 1;
+}
+
+function CalcArmAngle(MouseX,MouseY)
+{
+
+	var Hypotenuse = GetDistance(MouseX,MouseY,TurnTable.ToneArmAxisX,TurnTable.ToneArmAxisY);  
+
+	var Opposite = TurnTable.ToneArmAxisX - MouseX;
+	if (Opposite < 0)
+		return 0;
+	if (Hypotenuse < 0)
+		return 0;
+	var SinOfAngle= Opposite/Hypotenuse;
+	var MyNewAngle =  Math.asin(SinOfAngle)*180/Math.PI;
+	var Correction = (50 *  (645 - Hypotenuse)) / Hypotenuse
+//	Correction = 0;
+	MyConsole("Correction: " + Correction);
+	return MyNewAngle + Correction;
+}
+
+function CheckNeedleArmClick(x,y)
+{
+
+	if (TurnTable.MouseDownOverNeedle == "ON")
+		return 1;
+	var cx = TurnTable.ToneArmAxisX;	//1004;
+	var cy = TurnTable.ToneArmAxisY; 	//211;
+	var r = TurnTable.ToneArmRadius; //645;
+	var a = ((90   + TurnTable.ArmangleInDegrees ) * Math.PI)/180;
+	var Nx = cx + r * Math.cos(a);
+	var Ny = cy + r * Math.sin(a);
+ msg = "X=" + x + " Y=" + y + " Nx=" + Nx + " Ny=" + Ny + "angle=" + TurnTable.ArmangleInDegrees;
+			MyConsole(msg);
+	var Nw = TurnTable.ToneArmPickupAreaWidth; //150; 	
+	var Nh = TurnTable.ToneArmPickupAreaHeight; //275; 
+	if (x >= Nx-Nw/2 && x <= Nx + Nw && y >= Ny  - Nh/2 && y <= Ny + Nh) {
+
+		TurnTable.MouseDownOverNeedle = "ON";
+		DrawFakeNeedle();
+
+		PauseTrack();
+		clearInterval(ArmTimer);
+		return 1;
+		console.log("we found needle");
+		}
+	else
+		TurnTable.MouseDownOverNeedle = "OFF";
+	return 0;
+}
+	
+
+	
+
+function diff (num1, num2) {
+  if (num1 > num2) {
+    return (num1 - num2);
+  } else {
+    return (num2 - num1);
+  }
+};
+
+function GetDistance(x1, y1, x2, y2) {
+  var deltaX = diff(x1, x2);
+  var deltaY = diff(y1, y2);
+  var dist = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+  return (dist);
+};
+
+
+
+function CheckTurnTableClick(x,y)
+{
+var StartButtonX = 39;
+var StartButtonY = 834;
+var StartButtonW = 115;
+var StartButtonH = 84;
+	 if (x > StartButtonX && x < (StartButtonX + StartButtonW) && y > StartButtonY && y < (StartButtonY + StartButtonH)) {
+		if (TurnTable.OnStatus == "OFF")
+			StartPlayer();
+		else
+			StopPlayer();
+		return 1;
+		}
+	return 0;
+}
+		
+
+
+ 
+
+
+function StartPlayer()
+{
+	DisplayStartButton("ON");
+	if (TurnTable.IPhone == 1  && TurnTable.IPhoneTrackLoaded == 0) {
+		PP.src = VinylRecord.Side[TurnTable.CurrentSide].AlbumTrackURLPath;
+		PP.play();
+//		TestMotor();
+		TurnTable.IPhoneTrackLoaded = 1;
+		PP.muted = true;
+		
+		}
+	PlayerTimer = setInterval(ClockWise,TurnTable.RotationPulseMilliSeconds);
+	TurnTable.OnStatus = "ON";
+	PlayTrack();
+	
+}
+
+
+
+function DisplayStartButton(Status)
+{
+
+var BX = 37;
+var BY = 833;
+var BW = 124;
+var BH = 90;
+
+	if (Status == "ON") {
+		var AColor = "#222222";
+		var BColor = "#DDDDDD";
+		}
+	else {
+		var BColor = "#222222";
+		var AColor = "#DDDDDD";
+		}
+
+	Context(TurnTable.PlayerCanvas).beginPath();
+	Context(TurnTable.PlayerCanvas).moveTo(BX, BY);
+	Context(TurnTable.PlayerCanvas).lineTo(BX + BW, BY);
+	Context(TurnTable.PlayerCanvas).strokeStyle = AColor;
+	Context(TurnTable.PlayerCanvas).lineWidth = 4;
+	Context(TurnTable.PlayerCanvas).stroke();
+
+	Context(TurnTable.PlayerCanvas).beginPath();
+	Context(TurnTable.PlayerCanvas).moveTo(BX, BY);
+	Context(TurnTable.PlayerCanvas).lineTo(BX , BY + BH);
+	Context(TurnTable.PlayerCanvas).strokeStyle = AColor;
+	Context(TurnTable.PlayerCanvas).lineWidth = 4;
+	Context(TurnTable.PlayerCanvas).stroke();
+
+
+	Context(TurnTable.PlayerCanvas).beginPath();
+	Context(TurnTable.PlayerCanvas).moveTo(BX, BY + BH);
+	Context(TurnTable.PlayerCanvas).lineTo(BX + BW, BY + BH);
+	Context(TurnTable.PlayerCanvas).strokeStyle = BColor;
+	Context(TurnTable.PlayerCanvas).lineWidth = 4;
+	Context(TurnTable.PlayerCanvas).stroke();
+
+	Context(TurnTable.PlayerCanvas).beginPath();
+	Context(TurnTable.PlayerCanvas).moveTo(BX + BW, BY);
+	Context(TurnTable.PlayerCanvas).lineTo(BX + BW, BY +BH);
+	Context(TurnTable.PlayerCanvas).strokeStyle = BColor;
+	Context(TurnTable.PlayerCanvas).lineWidth = 4;
+	Context(TurnTable.PlayerCanvas).stroke();
+}
+
+
+function StopPlayer()
+{
+	DisplayStartButton("OFF");
+	TurnOffRoundTable();
+	clearInterval(PlayerTimer);
+	TurnTable.OnStatus = "OFF";
+	clearInterval(ArmTimer);
+	
+	PauseTrack();
+}
+
+function ClockWise()
+{
+        TurnTable.angleInDegrees = TurnTable.angleInDegrees + TurnTable.RotationDegreesPerPulse;
+	drawRotated(TurnTable.angleInDegrees);
+}
+
+
+function RotateArm()
+{
+
+	if (TurnTable.MouseDownOverNeedle == "ON")
+		return;
+	if (TurnTable.OnStatus == "OFF")
+		return;
+	if (TurnTable.ArmangleInDegrees < TurnTable.StartNeedleArmAngle)
+		return;
+	if (TurnTable.ArmangleInDegrees > TurnTable.MaxNeedleArmAngle) {
+		MakeScrewFast();
+		setTimeout(MakeScrewSlow,1000);
+		SpiralToEndGroove()
+		return;
+		}
+	
+	MyTotalSeconds = 0;
+	if (TurnTable.IPhone == 1) 
+		MyTotalSeconds = PP.currentTime;
+	else {
+		for (i=0;i<TurnTable.CurrentTrack;i++) 
+			MyTotalSeconds = MyTotalSeconds + VinylRecord.Side[TurnTable.CurrentSide].Track[i].Duration;
+		MyTotalSeconds = MyTotalSeconds + PP.currentTime;
+		}
+	TurnTable.ArmangleInDegrees = TurnTable.StartNeedleArmAngle + TurnTable.NeedleAngleAdjustmentPerSecond() * MyTotalSeconds; //27
+        drawRotateArm(TurnTable.ArmangleInDegrees);
+	
+}
+
+function NotNeededRotateToEndGroove()
+{
+	setTimeout(SpiralToEndGroove,500);
+}
+
+function SpiralToEndGroove() 
+{
+	if (TurnTable.IPhone == 1) {
+		StopPlayer();
+		TurnTable.ArmangleInDegrees = TurnTable.LastForeverGrooveAngle;
+		clearInterval(ArmTimer);
+		drawRotateArm(TurnTable.ArmangleInDegrees);
+		SpiralToHome();
+		TurnTable.IPhoneTrackLoaded = 0;
+		return;
+		}
+	if (TurnTable.MouseDownOverNeedle == "ON") {
+//		PP.pause();
+//		PP.loop=0;
+		return;
+		}
+	if (TurnTable.ArmangleInDegrees > TurnTable.LastForeverGrooveAngle) {
+		PlayEndGrooveSound()
+		if (TurnTable.IPhone == 1)
+			StopPlayer();
+		return;
+		}
+	if (TurnTable.MouseDownOverNeedle == "ON") {
+//		PP.pause();
+//		PP.loop=0;
+		return;
+		}
+	
+	clearInterval(ArmTimer);
+	TurnTable.ArmangleInDegrees = TurnTable.ArmangleInDegrees + 0.1;
+	drawRotateArm(TurnTable.ArmangleInDegrees);
+	setTimeout(SpiralToEndGroove,100);
+}
+
+function SpiralToHome()
+{
+	if (TurnTable.ArmangleInDegrees <10)
+		return;
+	clearInterval(ArmTimer);
+	TurnTable.ArmangleInDegrees = TurnTable.ArmangleInDegrees - 5;
+	drawRotateArm(TurnTable.ArmangleInDegrees);
+	setTimeout(SpiralToHome,100);
+}
+	
+
+function drawRotateArm(degrees)
+{
+        Context(TurnTable.FToneArmCanvas).clearRect(0,0,Canvas(TurnTable.FToneArmCanvas).width,Canvas(TurnTable.FToneArmCanvas).height);
+        Context(TurnTable.FToneArmCanvas).save();
+        Context(TurnTable.FToneArmCanvas).translate(Canvas(TurnTable.FToneArmCanvas).width/2,Canvas(TurnTable.FToneArmCanvas).height/2);
+        Context(TurnTable.FToneArmCanvas).rotate(degrees*Math.PI/180);
+        Context(TurnTable.FToneArmCanvas).drawImage(FToneArmImage,-FToneArmImage.width/2,-FToneArmImage.width/2);
+        Context(TurnTable.FToneArmCanvas).restore();
+	MyConsole("Now drawing rotation of fake needle");
+	DrawFakeNeedle();
+}
+
+function drawRotated(degrees)
+{
+        Context(TurnTable.RecordCanvas).clearRect(0,0,Canvas(TurnTable.RecordCanvas).width,Canvas(TurnTable.RecordCanvas).height);
+       	Context(TurnTable.RecordCanvas).save();
+        Context(TurnTable.RecordCanvas).translate(Canvas(TurnTable.RecordCanvas).width/2,Canvas(TurnTable.RecordCanvas).height/2);
+        Context(TurnTable.RecordCanvas).rotate(degrees*Math.PI/180);
+        Context(TurnTable.RecordCanvas).drawImage(VinylRecordImage,-VinylRecordImage.width/2,-VinylRecordImage.width/2);
+        Context(TurnTable.RecordCanvas).restore();
+}
+
+
+function PlayTrack()
+{
+	DrawFakeNeedle();
+	MyConsole("PlayTrack function: TurnTableStatus=" + TurnTable.OnStatus);
+	if (TurnTable.MouseDownOverNeedle == "ON")
+		return;
+	if (TurnTable.OnStatus == "OFF")
+		return;
+	if (TurnTable.ArmangleInDegrees > (TurnTable.StartNeedleArmAngle-3) && TurnTable.ArmangleInDegrees <= TurnTable.StartNeedleArmAngle) {
+		TurnTable.ArmangleInDegrees = TurnTable.StartNeedleArmAngle;
+		drawRotateArm(TurnTable.ArmangleInDegrees);
+		}
+	if (TurnTable.ArmangleInDegrees < TurnTable.StartNeedleArmAngle)
+		return;
+	
+	if (TurnTable.GrooveColor == "GREEN") {
+		TurnTable.GrooveColor="BLACK";
+		DrawSeparationGrooves();
+		}
+	NumberOfSeconds = ( TurnTable.ArmangleInDegrees-TurnTable.StartNeedleArmAngle) * TurnTable.SecondsPerNeedleArmDegree() ;// there are 48 seconds per degree
+		MyConsole("PlayTrack ArmangleInDegrees= " + TurnTable.ArmangleInDegrees + " NumberOfSeconds=" + NumberOfSeconds);
+
+	if (NumberOfSeconds >= TurnTable.TotalDuration) {
+		SpiralToEndGroove()
+		return;
+		}		
+	if (TurnTable.IPhone) {
+		PP.muted = false;
+		if (PP.readyState > 0)
+ 			PP.currentTime = parseInt(NumberOfSeconds);
+		ArmTimer = setInterval(RotateArm,2000);
+		
+		SetCurrentAudioTime(NumberOfSeconds);
+		return;
+		}
+	TotalTrackSeconds = 0
+	NeededTrack = 100;
+	for (i=0;i<TurnTable.NumberOfTracks;i++) {
+		if (NumberOfSeconds < TotalTrackSeconds + VinylRecord.Side[TurnTable.CurrentSide].Track[i].Duration)  {
+			NeededTrack = i;
+			break;
+			}
+		TotalTrackSeconds = TotalTrackSeconds + VinylRecord.Side[TurnTable.CurrentSide].Track[i].Duration;
+		}
+	if (NeededTrack < TurnTable.NumberOfTracks) {
+		MyConsole("NeededTrack=" + NeededTrack);
+		if (NeededTrack != TurnTable.CurrentTrack) {
+			PP.src = VinylRecord.Side[TurnTable.CurrentSide].Track[NeededTrack].URLPath;
+			TurnTable.CurrentTrack= NeededTrack;
+			}
+		PP.play();
+		
+		ArmTimer = setInterval(RotateArm,2000);
+
+		MyConsole("NumberOfSeconds=" + NumberOfSeconds + " -- TotalTrackSeconds=" + TotalTrackSeconds);
+//		PP.currentTime = NumberOfSeconds - TotalTrackSeconds;
+		SetCurrentAudioTime(NumberOfSeconds - TotalTrackSeconds);
+		}
+}
+
+function SetCurrentAudioTime(NumberOfSeconds)
+{
+//	if (PP.currentTime >= 0) {
+	if (PP.readyState > 0) {
+		PP.currentTime = parseInt(NumberOfSeconds);
+		PP.muted = false;
+		return;
+		}
+	MyConsole("------- cannot set currentTime yet PP.currentTime=" + PP.currentTime);
+	PP.muted = true;
+//	PP.pause();
+
+	clearInterval(ArmTimer);
+	setTimeout(PlayTrack,200);
+}
+
+function PauseTrack()
+{
+	if ( TurnTable.IPhone == 1)
+		PP.muted = true;
+	else
+		PP.pause();
+	TurnTable.GrooveColor = "GREEN";
+	DrawSeparationGrooves();
+}
+
+function PlayEndGrooveSound()
+{
+	return;
+
+}
+
+function PlayNextTrack()
+{
+	if (TurnTable.IPhone == 1) {
+		SpiralToEndGroove();
+		return;
+		}
+		
+	if (TurnTable.CurrentTrack < TurnTable.NumberOfTracks-1) {
+			MakeScrewFast();
+			setTimeout(MakeScrewSlow,1000);
+		TurnTable.CurrentTrack = TurnTable.CurrentTrack + 1;
+		PP.src = VinylRecord.Side[TurnTable.CurrentSide].Track[TurnTable.CurrentTrack].URLPath;
+		PP.play();
+		}
+	else {
+		MyConsole("we found end");
+//		clearInterval(ArmTimer);
+		SpiralToEndGroove();
+		PlayEndGrooveSound();
+//			MakeScrewFast();
+//			setTimeout(MakeScrewSlow,1000);
+		WaitAndTurnOffScrew();
+		}	
+}
+
+function AdjustVolume(NewVolume)
+{
+	PP.volume = NewVolume/100;
+}
+
+
+
+function ViewCover(CoverView, Type)
+{
+	if (TurnTable.ViewJacketActivated == 1 && Type == 1) {
+		document.getElementById("idExtra").innerHTML = "&nbsp;"
+		TurnTable.ViewJacketActivated = 0;
+		return;
+		}
+	TurnTable.ViewJacketActivated = 1;
+	if (CoverView == "Front") {
+		var URL = VinylRecord.JacketDecoration.FrontURLPath;
+		FlipCover = 'Back';
+		}
+	else {
+		var URL = VinylRecord.JacketDecoration.BackURLPath;
+		FlipCover = 'Front';
+		}
+	
+	var ImgFile= "<IMG border=1 width=1220 Src=" + URL + ">"	
+	Str = "<TABLE>"
+	Str = Str + "<TR><TD align=center><input Type=Button style='width:800px; color:white;background-color:green' onClick=ViewCover('" + FlipCover + "',0) value='Flip cover'></TD></TR>"
+	Str = Str + "<TR><TD id=idCoverTop align=center>" + ImgFile + "<TD></TR></TABLE>"
+	document.getElementById("idExtra").innerHTML = Str;
+//	document.getElementById('idCoverTop').scrollTop =  1800;
+//window.pageYOffset = 8000;
+	//window.scrollTo(0,2500);
+	setTimeout(ScrollDownWindow,1000);
+//document.documentElement.scrollTop = document.body.scrollTop = 2000;
+
+}
+function DistributeRecord()
+{
+	Url = "https://kunaki.com/DistributeRecord.htm?ProductId=" + VinylRecord.ProductId
+	document.getElementById("idExtra").innerHTML = "<iframe src='" + Url + "' width='100%' height='2000px'></iframe>"
+	setTimeout(ScrollDownWindow,1000);	
+}
+function DoIFrame(UrlPage)
+{
+	if (UrlPage == "retail") {
+//		Url = "https://kunaki.com/NoVinyl.htm"
+		Url = "https://kunaki.com/VinylSales.asp?PID=" +  VinylRecord.ProductId + "&OrderType=RetailSale&PP=1"
+		window.open(Url);
+		return;
+		}
+	else if (UrlPage == "wholesale")
+//		Url = "https://kunaki.com/NoVinyl.htm"
+		Url = "https://kunaki.com/VinylLogin.asp?PID=" +  VinylRecord.ProductId + "&Type=wholesale"
+	else if (UrlPage == "setprice")
+		Url = "https://kunaki.com/VinylLogin.asp?PID=" +  VinylRecord.ProductId + "&Type=setprice"
+	else
+		Url = "https://kunaki.com/" + UrlPage;
+
+	document.getElementById("idExtra").innerHTML = "<iframe src='" + Url + "' width='100%' height='2000px' target='_parent' ></iframe>"
+	setTimeout(ScrollDownWindow,1000);
+}
+function ScrollDownWindow()
+{
+	window.scrollTo(0,1000);
+}
+
+function SendPort(Str)
+{
+	if (ManufactureStatus == "OFF")
+		return;
+	port.send(Str);
+}
+
+
+function MyAlert(Str)
+{
+	return;
+	alert(Str);
+}
+
+
+function StartManufacture()
+{
+	StopPlayer();
+	StartPlayer();
+	TurnTable.ArmangleInDegrees = TurnTable.StartNeedleArmAngle;
+	RotateArm();
+	PlayTrack();
+}
+
+function MySwitch(MyDevice , MySignal)
+{
+	if (ManufactureStatus == "OFF")
+		return;
+	MyConsole(MyDevice + "=" + MySignal);
+
+	if (MyDevice == "RoundTable") {
+		if (MySignal == "ON")
+			SendPort("4");
+		else {
+			SendPort("D");
+			}
+		return;
+		}
+
+	if (MyDevice == "LatheFast") {
+		if (MySignal == "ON") {
+			
+			SendPort("2");
+			}
+		else {
+			
+			SendPort("B");
+			}
+		document.getElementById("idLatheFast").innerHTML = MySignal
+		return;
+		}
+	if (MyDevice == "LatheOff") {
+		if (MySignal == "ON")
+			SendPort("3");
+		else
+			SendPort("C");
+		document.getElementById("idLatheOff").innerHTML = MySignal
+		return;
+		}
+
+
+}
+
+function WaitAndTurnOffScrew()
+{
+	if (ManufactureStatus == "OFF")
+		return;
+	MyConsole("MakingLatheFast");
+	MakeScrewFast();
+	var EndLoopTime = 14000 + 7000*((TurnTable.MaxSecondsOnVinyl - TurnTable.TotalDuration)/100);
+	setTimeout(TurnOffScrew1,EndLoopTime);
+	setTimeout(TurnOffScrew2,EndLoopTime+6000);
+}
+
+function TurnOffScrew2()
+{
+	if (ManufactureStatus == "OFF")
+		return;
+	MySwitch("LatheOff","ON");
+	setTimeout(TurnOffRoundTable,4000);
+}
+
+
+function TurnOffRoundTable()
+{
+	if (ManufactureStatus == "OFF")
+		return;
+	MySwitch("RoundTable","OFF");
+}
+function TurnOffScrew1()
+{
+	if (ManufactureStatus == "OFF")
+		return;
+	MySwitch("LatheFast","OFF");
+	
+}
+
+function MakeScrewFast()
+{
+	if (ManufactureStatus == "OFF")
+		return;
+	MySwitch("LatheFast","ON");
+}
+
+function MakeScrewSlow()
+{
+	if (ManufactureStatus == "OFF")
+		return;
+	MySwitch("LatheFast","OFF");
+//	PP.play();
+}
+
+
+
+
+
+
+function InitializeManufacture()
+{
+	if (ManufactureStatus == "OFF")
+		return
+	SetPort();	
+	MySwitch("RoundTable","ON");
+	MySwitch("LatheOff","OFF");
+	MySwitch("LatheSlow","ON");
+
+}
+function SetPort() 
+{ 
+	if (ManufactureStatus == "OFF")
+		return;
+    port.Port=5; 
+    port.BaudRate=9600;
+    port.DataBits=8;
+    port.Parity=1; 
+    port.StopBits=0; 
+    port.Connected=1; //Connects to the serial port
+	SendPort("Z");
+    if(port.error==0) //Display errors if found
+	return;
+    alert("com port setup error:" + port.ErrorDescription);
+	SendPort("X");
+}
+
+function CommEventHandler(Evt, Data)
+{
+	if (Evt == 0)
+		alert("Disconnect from port");
+	else if (Evt == 3)
+		alert("Connected to port");
+        else
+		alert("something else"); 
+}
+
+
+
+		
+window.onload = Initialize();
+
+
+
+</script>
+<div id="preload">
+<img src="https://kunaki.com/vinyl/an-turntable-embeddedlogo3.jpg" width=1 height=1 alt=Image01 />
+<img src="https://kunaki.com/vinyl/an-vinyl.jpg" width=1 height=1 alt=Image01 />
+<img src="https://kunaki.com/vinyl/tonearm_3.png" width=1 height=1 alt=Image01 />
+</div>
+</body>
+</html>
 
 
 
@@ -224,6 +1661,12 @@
 
 
 
+
+
+<div class="album text-muted">
+  <div class="container">
+
+    <div class="row">
 
 
 
