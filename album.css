@@ -20,6 +20,7 @@ body {
 .jumbotron-heading {
   font-weight: 300;
   color:#ffffff;
+	font-size: 3rem;
 }
 
 .jumbotron .container {
