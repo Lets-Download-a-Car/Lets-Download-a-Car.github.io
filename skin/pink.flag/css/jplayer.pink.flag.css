@@ -382,7 +382,7 @@ div.jp-video .jp-progress {
   left: 0; }
 
 .jp-audio-stream .jp-interface .jp-volume-bar {
-  width: 97px;
+  width: 100%;
   border-right: 1px solid #180920;
   padding-right: 1px; }
 
