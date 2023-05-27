@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+	  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -19,11 +20,32 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 
-	  <link type="text/css" href="/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" />
+		  <link type="text/css" href="/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" />
 	  <script type="text/javascript" src="/js/jquery.min.js"></script>
   <script type="text/javascript" src="/js/jquery.jplayer.min.js"></script>
-	  
-  </head>
+	  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#jquery_jplayer_1").jPlayer({
+        ready: function () {
+          $(this).jPlayer("setMedia", {
+            title: "Bubble",
+            m4a: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
+            oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
+          });
+        },
+        cssSelectorAncestor: "#jp_container_1",
+        swfPath: "/js",
+        supplied: "m4a, oga",
+        useStateClassSkin: true,
+        autoBlur: false,
+        smoothPlayBar: true,
+        keyEnabled: true,
+        remainingDuration: true,
+        toggleDuration: true
+      });
+    });
+  </script>
+	</head>
 
   <body>
 
