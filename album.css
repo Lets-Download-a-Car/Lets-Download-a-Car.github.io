@@ -98,12 +98,15 @@ p  {
 font-family:Barlow !important;
 }
 
+.mejs-play button {
+  background:#09e805;
+}
+
 @media screen and (min-width: 0px) and (max-width: 400px) {
     .greenrecord{
         display:none !important;
     }
 }
-
 
 
 @media (max-width: 767px) {
